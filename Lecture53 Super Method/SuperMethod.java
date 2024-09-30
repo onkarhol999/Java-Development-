@@ -15,7 +15,7 @@ class B extends A {
     }
 
     public B(int n) {
-        super(n);
+        this();
         System.out.println("in parametarised B");
     }
 }
