@@ -25,19 +25,36 @@ public class Start {
         String url = "jdbc:postgresql://localhost:5432/TeluskoJavaLecture119";
         String uname = "postgres";
         String pass = "Satara@123";
-        String sql = "select * from students";
+        String sql = "insert into students values (?,?,?)";
         try {
             Connection conn = DriverManager.getConnection(url,uname,pass);
             System.out.println("Database Connected");
+//            Statement st = conn.createStatement();
+//            Read
+//            ResultSet rs = st.executeQuery(sql);
+//            while (rs.next()){
+//                System.out.print(rs.getInt("sid")+"-");
+//                System.out.print(rs.getString("sname")+"-");
+//                System.out.println(rs.getInt("marks"));
+//            }
 
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            while (rs.next()){
-                System.out.print(rs.getInt("sid")+"-");
-                System.out.print(rs.getString("sname")+"-");
-                System.out.println(rs.getInt("marks"));
-            }
+//            Create
+//            boolean status = st.execute(sql);
+//            System.out.println(status);
+//            Add data to backend from user input
+            int sid = 101;
+            String sname = "Omii";
+            int marks = 86;
+//            Use preparedStatement to read data
+            PreparedStatement st = conn.prepareStatement(sql);
+            st.setInt(1,sid);
+            st.setString(2,sname);
+            st.setInt(3,marks);
+
+            st.execute();
+
             conn.close();
+            System.out.println("Connection Closed");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
