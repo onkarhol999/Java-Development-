@@ -4,9 +4,16 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
 <!-- bean definitions here -->
-    <bean id="alien" class="org.example.Aline">
+    <bean id="alien" class="org.example.Aline" autowire="byType">
+<!--        <property name="age" value="229"></property>-->
+<!--        <constructor-arg value="22"/>-->
+        <property name="age" value="21"></property>
+<!--        <property name="com" ref="com2"></property>-->
+    </bean>
 
-
+    <bean id="com1" class="org.example.Desktop" primary="true">
+    </bean>
+    <bean id="com2" class="org.example.Laoptop">
     </bean>
 
 </beans>
